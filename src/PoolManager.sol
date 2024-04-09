@@ -201,24 +201,6 @@ contract PoolManager is IPoolManager, Fees, Extsload {
         emit ProtocolFeeUpdated(id, newProtocolFee);
     }
 
-    // /// @inheritdoc IPoolManager
-    // function updateDynamicSwapFee(PoolKey memory key) external override {
-    //     if (key.fee.isDynamicFee()) {
-    //         uint24 newDynamicSwapFee = _fetchDynamicSwapFee(key);
-    //         PoolId id = key.toId();
-    //         pools[id].setSwapFee(newDynamicSwapFee);
-    //         emit DynamicSwapFeeUpdated(id, newDynamicSwapFee);
-    //     } else {
-    //         revert FeeNotDynamic();
-    //     }
-    // }
-
-    // function _fetchDynamicSwapFee(PoolKey memory key) internal view returns (uint24 dynamicSwapFee) {
-    //     dynamicSwapFee = IDynamicFeeManager(address(0)).getFee(msg.sender, key);
-    //     if (dynamicSwapFee >= FeeLibrary.ONE_HUNDRED_PERCENT_FEE) revert FeeTooLarge();
-    //     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // }
-
     function _checkPoolInitialized(PoolId id) internal view {
         if (pools[id].isNotInitialized()) revert PoolNotInitialized();
     }
